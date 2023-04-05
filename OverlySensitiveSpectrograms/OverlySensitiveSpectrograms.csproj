@@ -108,7 +108,9 @@
     <Compile Include="AffinityPatches\BasicSpectrogramDataPatch.cs" />
     <Compile Include="Installers\OSSGameCoreInstaller.cs" />
     <Compile Include="Installers\OSSMenuInstaller.cs" />
+    <Compile Include="Managers\EnvironmentGameObjectGroupManager.cs" />
     <Compile Include="Managers\MenuButtonManager.cs" />
+    <Compile Include="Managers\EnvironmentSpectrogramManager.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

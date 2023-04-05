@@ -1,16 +1,17 @@
-﻿<settings-container>
-  <vertical spacing='5'>
-    <vertical child-control-height='false'>
-      <dropdown-list-setting text='Spectrum Window' choices='spectrum-window-choices' value='spectrum-window' apply-on-change='true' />
-    </vertical>
-    <vertical child-control-height='false'>
-      <increment-setting text='Sample Boost' value='sample-boost' apply-on-change='true' />
-      <increment-setting text='Sample Lerp 0' value='sample-lerp-0' apply-on-change='true' />
-      <increment-setting text='Sample Lerp 1' value='sample-lerp-1' apply-on-change='true' />
-    </vertical>
-    <vertical child-control-height='false'>
-      <toggle-setting text='Use Instant Change Threshold' value='use-instant-change-threshold' apply-on-change='true' />
-      <increment-setting text='Instant Change Threshold' value='instant-change-threshold' increment='0.1' apply-on-change='true' />
-    </vertical>
+﻿<vertical spacing='10'>
+  <vertical child-control-height='false'>
+    <dropdown-list-setting text='Spectrum Window' choices='spectrum-window-choices' value='spectrum-window' apply-on-change='true' />
   </vertical>
-</settings-container>
+  <vertical child-control-height='false'>
+    <increment-setting text='Sample Boost' value='sample-boost' apply-on-change='true' />
+    <increment-setting text='Sample Lerp 0' value='sample-lerp-0' apply-on-change='true' />
+    <increment-setting text='Sample Lerp 1' value='sample-lerp-1' apply-on-change='true' />
+  </vertical>
+  <vertical child-control-height='false'>
+    <increment-setting text='Peak Offset' value='peak-offset' increment='0.1' apply-on-change='true' />
+  </vertical>
+  <vertical child-control-height='false'>
+    <toggle-setting text='Use Instant Change Threshold' value='use-instant-change-threshold' apply-on-change='true' />
+    <increment-setting text='Instant Change Threshold' value='instant-change-threshold' increment='0.1' apply-on-change='true' />
+  </vertical>
+</vertical>

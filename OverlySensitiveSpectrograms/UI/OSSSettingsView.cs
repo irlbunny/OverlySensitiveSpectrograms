@@ -45,6 +45,13 @@ namespace OverlySensitiveSpectrograms.UI
             set => _config.SampleLerp1 = value;
         }
 
+        [UIValue("peak-offset")]
+        public float PeakOffset
+        {
+            get => _config.PeakOffset;
+            set => _config.PeakOffset = value;
+        }
+
         [UIValue("use-instant-change-threshold")]
         public bool UseInstantChangeThreshold
         {

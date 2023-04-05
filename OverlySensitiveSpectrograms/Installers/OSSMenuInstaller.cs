@@ -13,7 +13,7 @@ namespace OverlySensitiveSpectrograms.Installers
             Container.Bind<OSSFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
 
             // Managers
-            Container.BindInterfacesTo<MenuButtonManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MenuButtonManager>().AsSingle();
         }
     }
 }

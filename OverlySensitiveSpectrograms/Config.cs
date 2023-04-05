@@ -19,6 +19,8 @@ namespace OverlySensitiveSpectrograms
         public virtual float SampleLerp0 { get; set; } = 16f;
         public virtual float SampleLerp1 { get; set; } = 8f;
 
+        public virtual float PeakOffset { get; set; } = 1f;
+
         public virtual bool UseInstantChangeThreshold { get; set; }
         public virtual float InstantChangeThreshold { get; set; } = .1f;
 
