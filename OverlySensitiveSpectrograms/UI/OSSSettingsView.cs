@@ -12,7 +12,7 @@ namespace OverlySensitiveSpectrograms.UI
     [HotReload(RelativePathToLayout = @"..\Views\settings-view.bsml")]
     internal class OSSSettingsView : BSMLAutomaticViewController
     {
-        private Config _config;
+        [Inject] private Config _config;
 
         [UIValue("spectrum-window-choices")]
         private List<object> _spectrumWindowChoices = ((object[])Enum.GetNames(typeof(FFTWindow))).ToList();
@@ -64,12 +64,6 @@ namespace OverlySensitiveSpectrograms.UI
         {
             get => _config.InstantChangeThreshold;
             set => _config.InstantChangeThreshold = value;
-        }
-
-        [Inject]
-        public void Construct(Config config)
-        {
-            _config = config;
         }
     }
 }

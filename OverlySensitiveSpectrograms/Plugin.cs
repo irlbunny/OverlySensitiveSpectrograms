@@ -1,6 +1,5 @@
 ﻿using IPA;
 using IPA.Config.Stores;
-using IPA.Loader;
 using OverlySensitiveSpectrograms.Installers;
 using SiraUtil.Attributes;
 using SiraUtil.Zenject;
@@ -13,7 +12,7 @@ namespace OverlySensitiveSpectrograms
     public class Plugin
     {
         [Init]
-        public Plugin(IPALogger logger, IPAConfig conf, PluginMetadata metadata, Zenjector zenjector)
+        public Plugin(IPALogger logger, IPAConfig conf, Zenjector zenjector)
         {
             zenjector.UseLogger(logger);
 
@@ -21,7 +20,6 @@ namespace OverlySensitiveSpectrograms
             zenjector.Install(Location.App, container =>
             {
                 container.BindInstance(config).AsSingle();
-                container.BindInstance(new UBinder<Plugin, PluginMetadata>(metadata));
             });
 
             zenjector.Install<OSSMenuInstaller>(Location.Menu);

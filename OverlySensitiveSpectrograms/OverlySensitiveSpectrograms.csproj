@@ -116,6 +116,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\OSSFlowCoordinator.cs" />
     <Compile Include="UI\OSSSettingsView.cs" />
+    <Compile Include="Utilities\VectorUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />

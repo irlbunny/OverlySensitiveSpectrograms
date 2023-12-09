@@ -1,17 +1,13 @@
 ﻿using SiraUtil.Affinity;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace OverlySensitiveSpectrograms.AffinityPatches
 {
     internal class BasicSpectrogramDataPatch : IAffinity
     {
-        private readonly Config _config;
-
-        public BasicSpectrogramDataPatch(Config config)
-        {
-            _config = config;
-        }
+        [Inject] private Config _config;
 
         [AffinityPatch(typeof(BasicSpectrogramData), "get_Samples"), AffinityPrefix]
         private bool GetSamples(ref float[] __result, ref bool ____hasData, AudioSource ____audioSource, float[] ____samples)
@@ -25,7 +21,7 @@ namespace OverlySensitiveSpectrograms.AffinityPatches
             return false;
         }
 
-        [AffinityPatch(typeof(BasicSpectrogramData), nameof(BasicSpectrogramData.ProcessSamples)), AffinityPrefix]
+        [AffinityPatch(typeof(BasicSpectrogramData), "ProcessSamples"), AffinityPrefix]
         private bool ProcessSamples(float[] sourceSamples, List<float> processedSamples)
         {
             var deltaTime = Time.deltaTime;

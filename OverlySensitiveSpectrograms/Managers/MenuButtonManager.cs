@@ -1,9 +1,6 @@
-﻿using BeatSaberMarkupLanguage;
-using BeatSaberMarkupLanguage.MenuButtons;
+﻿using BeatSaberMarkupLanguage.MenuButtons;
 using OverlySensitiveSpectrograms.UI;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Zenject;
 
 namespace OverlySensitiveSpectrograms.Managers
@@ -15,28 +12,27 @@ namespace OverlySensitiveSpectrograms.Managers
 
         private readonly MainFlowCoordinator _mainFlowCoordinator;
         private readonly OSSFlowCoordinator _ossFlowCoordinator;
+        private readonly MenuButtons _menuButtons;
 
         private readonly MenuButton _menuButton;
 
-        public MenuButtonManager(MainFlowCoordinator mainFlowCoordinator, OSSFlowCoordinator ossFlowCoordinator)
+        public MenuButtonManager(MainFlowCoordinator mainFlowCoordinator, OSSFlowCoordinator ossFlowCoordinator, MenuButtons menuButtons)
         {
             _mainFlowCoordinator = mainFlowCoordinator;
             _ossFlowCoordinator = ossFlowCoordinator;
+            _menuButtons = menuButtons;
 
             _menuButton = new MenuButton(BUTTONTEXT, BUTTONHINT, OnMenuButtonClick);
         }
 
-        public async void Initialize()
+        public void Initialize()
         {
-            await Task.Run(() => Thread.Sleep(100));
-
-            MenuButtons.instance.RegisterButton(_menuButton);
+            _menuButtons.RegisterButton(_menuButton);
         }
 
         public void Dispose()
         {
-            if (BSMLParser.IsSingletonAvailable && MenuButtons.IsSingletonAvailable)
-                MenuButtons.instance.UnregisterButton(_menuButton);
+            _menuButtons.UnregisterButton(_menuButton);
         }
 
         private void OnMenuButtonClick()
