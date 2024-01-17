@@ -9,18 +9,6 @@ namespace OverlySensitiveSpectrograms.AffinityPatches
     {
         [Inject] private Config _config;
 
-        [AffinityPatch(typeof(BasicSpectrogramData), "get_Samples"), AffinityPrefix]
-        private bool GetSamples(ref float[] __result, ref bool ____hasData, AudioSource ____audioSource, float[] ____samples)
-        {
-            if (!____hasData && ____audioSource != null)
-            {
-                ____audioSource.GetSpectrumData(____samples, 0, _config.SpectrumWindow);
-                ____hasData = true;
-            }
-            __result = ____samples;
-            return false;
-        }
-
         [AffinityPatch(typeof(BasicSpectrogramData), "ProcessSamples"), AffinityPrefix]
         private bool ProcessSamples(float[] sourceSamples, List<float> processedSamples)
         {

@@ -1,9 +1,5 @@
 ﻿using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace OverlySensitiveSpectrograms.UI
@@ -13,16 +9,6 @@ namespace OverlySensitiveSpectrograms.UI
     internal class OSSSettingsView : BSMLAutomaticViewController
     {
         [Inject] private Config _config;
-
-        [UIValue("spectrum-window-choices")]
-        private List<object> _spectrumWindowChoices = ((object[])Enum.GetNames(typeof(FFTWindow))).ToList();
-
-        [UIValue("spectrum-window")]
-        public string SpectrumWindow
-        {
-            get => _config.SpectrumWindow.ToString();
-            set => _config.SpectrumWindow = (FFTWindow)Enum.Parse(typeof(FFTWindow), value);
-        }
 
         [UIValue("sample-boost")]
         public float SampleBoost

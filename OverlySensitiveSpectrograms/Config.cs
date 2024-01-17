@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using IPA.Config.Stores;
-using UnityEngine;
 
 [assembly: InternalsVisibleTo(GeneratedStore.AssemblyVisibilityTarget)]
 namespace OverlySensitiveSpectrograms
@@ -11,8 +10,6 @@ namespace OverlySensitiveSpectrograms
 #pragma warning disable CS8632
         public event Action<Config>? Updated;
 #pragma warning restore CS8632
-
-        public virtual FFTWindow SpectrumWindow { get; set; } = FFTWindow.BlackmanHarris;
 
         public virtual float SampleBoost { get; set; } = 2f;
 
