@@ -1,27 +1,33 @@
 ﻿using HMUI;
 using Zenject;
 
-namespace OverlySensitiveSpectrograms.UI
+namespace OverlySensitiveSpectrograms.UI;
+
+internal class OSSFlowCoordinator : FlowCoordinator
 {
-    internal class OSSFlowCoordinator : FlowCoordinator
+    private MainFlowCoordinator _mainFlowCoordinator = null!;
+    private OSSSettingsView _settingsView = null!;
+
+    [Inject]
+    public void Construct(MainFlowCoordinator mainFlowCoordinator, OSSSettingsView settingsView)
     {
-        [Inject] private MainFlowCoordinator _mainFlowCoordinator;
-        [Inject] private OSSSettingsView _ossSettingsView;
+        _mainFlowCoordinator = mainFlowCoordinator;
+        _settingsView = settingsView;
+    }
 
-        protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
+    protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
+    {
+        if (firstActivation)
         {
-            if (firstActivation)
-            {
-                SetTitle("Overly Sensitive Spectrograms");
-                showBackButton = true;
+            SetTitle("Overly Sensitive Spectrograms");
+            showBackButton = true;
 
-                ProvideInitialViewControllers(_ossSettingsView);
-            }
+            ProvideInitialViewControllers(_settingsView);
         }
+    }
 
-        protected override void BackButtonWasPressed(ViewController topViewController)
-        {
-            _mainFlowCoordinator.DismissFlowCoordinator(this);
-        }
+    protected override void BackButtonWasPressed(ViewController topViewController)
+    {
+        _mainFlowCoordinator.DismissFlowCoordinator(this);
     }
 }

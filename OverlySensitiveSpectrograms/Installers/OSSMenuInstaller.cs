@@ -2,18 +2,17 @@
 using OverlySensitiveSpectrograms.UI;
 using Zenject;
 
-namespace OverlySensitiveSpectrograms.Installers
-{
-    internal class OSSMenuInstaller : Installer
-    {
-        public override void InstallBindings()
-        {
-            // UI
-            Container.Bind<OSSSettingsView>().FromNewComponentAsViewController().AsSingle();
-            Container.Bind<OSSFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
+namespace OverlySensitiveSpectrograms.Installers;
 
-            // Managers
-            Container.BindInterfacesAndSelfTo<MenuButtonManager>().AsSingle();
-        }
+internal class OSSMenuInstaller : Installer
+{
+    public override void InstallBindings()
+    {
+        // UI
+        Container.Bind<OSSSettingsView>().FromNewComponentAsViewController().AsSingle();
+        Container.Bind<OSSFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
+
+        // Managers
+        Container.BindInterfacesAndSelfTo<MenuButtonManager>().AsSingle();
     }
 }

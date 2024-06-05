@@ -4,7 +4,7 @@
       <increment-setting text='Sample Boost' value='sample-boost' apply-on-change='true' />
       <increment-setting text='Sample Lerp 0' value='sample-lerp-0' apply-on-change='true' />
       <increment-setting text='Sample Lerp 1' value='sample-lerp-1' apply-on-change='true' />
-      <increment-setting text='Peak Offset' value='peak-offset' increment='0.1' apply-on-change='true' />
+      <increment-setting text='Peak Z Offset' value='peak-z-offset' increment='0.1' apply-on-change='true' />
     </vertical>
     <vertical child-control-height='false'>
       <toggle-setting text='Use Instant Change Threshold' value='use-instant-change-threshold' apply-on-change='true' />
