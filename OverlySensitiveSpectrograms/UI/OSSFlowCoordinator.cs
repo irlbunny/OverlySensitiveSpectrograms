@@ -1,4 +1,7 @@
-﻿using HMUI;
+﻿#if !LATEST
+using BeatSaberMarkupLanguage;
+#endif
+using HMUI;
 using Zenject;
 
 namespace OverlySensitiveSpectrograms.UI;

@@ -1,4 +1,7 @@
-﻿using BeatSaberMarkupLanguage.MenuButtons;
+﻿#if !LATEST
+using BeatSaberMarkupLanguage;
+#endif
+using BeatSaberMarkupLanguage.MenuButtons;
 using OverlySensitiveSpectrograms.UI;
 using System;
 using Zenject;
