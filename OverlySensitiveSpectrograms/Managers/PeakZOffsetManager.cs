@@ -6,7 +6,7 @@ using Zenject;
 
 namespace OverlySensitiveSpectrograms.Managers;
 
-internal class EnvironmentPeakZOffsetManager : IInitializable, IDisposable
+internal class PeakZOffsetManager : IInitializable, IDisposable
 {
     private const string SpectrogramsGameObjectGroupId = "Spectrograms";
 
@@ -20,7 +20,7 @@ internal class EnvironmentPeakZOffsetManager : IInitializable, IDisposable
     private List<MeshRenderer> _meshRenderers = new();
     private Dictionary<MeshRenderer, Vector4> _peakOffsets = new();
 
-    public EnvironmentPeakZOffsetManager(
+    public PeakZOffsetManager(
         SiraLog log,
         Config config,
         EnvironmentGameObjectGroupManager environmentGameObjectGroupManager)
