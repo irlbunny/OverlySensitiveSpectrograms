@@ -36,7 +36,8 @@ internal class EnvironmentPeakZOffsetManager : IInitializable, IDisposable
         _currentPeakZOffset = _config.PeakZOffset;
         _environmentGameObjectGroupManager.Add<Spectrogram>(SpectrogramsGameObjectGroupId);
 
-        foreach (var spectrogram in _environmentGameObjectGroupManager.Get<Spectrogram>(SpectrogramsGameObjectGroupId))
+        var spectrograms = _environmentGameObjectGroupManager.Get<Spectrogram>(SpectrogramsGameObjectGroupId);
+        foreach (var spectrogram in spectrograms)
         {
             _meshRenderers.AddRange(spectrogram._meshRenderers);
         }

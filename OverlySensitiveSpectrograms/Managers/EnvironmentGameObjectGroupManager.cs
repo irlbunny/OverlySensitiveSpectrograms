@@ -31,12 +31,13 @@ internal class EnvironmentGameObjectGroupManager : IInitializable, IDisposable
 
     public T[] Get<T>(string id) where T : MonoBehaviour
     {
-        var groups = Get(id);
         var components = new List<T>();
+        var groups = Get(id);
         foreach (var group in groups)
         {
             components.AddRange(group.GetComponents<T>());
         }
+
         return components.ToArray();
     }
 
