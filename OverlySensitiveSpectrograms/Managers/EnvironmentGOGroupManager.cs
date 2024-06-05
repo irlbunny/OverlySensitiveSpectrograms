@@ -5,7 +5,7 @@ using Zenject;
 
 namespace OverlySensitiveSpectrograms.Managers;
 
-internal class EnvironmentGameObjectGroupManager : IInitializable, IDisposable
+internal class EnvironmentGOGroupManager : IInitializable, IDisposable
 {
     private readonly Dictionary<string, GameObject[]> _groups = new();
 

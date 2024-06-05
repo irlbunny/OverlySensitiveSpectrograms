@@ -30,7 +30,7 @@ internal class OSSGameCoreInstaller : Installer
         Container.BindInterfacesTo<BasicSpectrogramDataPatch>().AsSingle();
 
         // Managers
-        Container.BindInterfacesAndSelfTo<EnvironmentGameObjectGroupManager>().AsSingle();
+        Container.BindInterfacesAndSelfTo<EnvironmentGOGroupManager>().AsSingle();
 
         var environmentSceneName = _sceneSetupData.environmentInfo.sceneInfo.sceneName;
         if (!_unsupportedPeakZOffsetEnvironments.Contains(environmentSceneName))

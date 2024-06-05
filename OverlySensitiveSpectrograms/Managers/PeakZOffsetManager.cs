@@ -1,5 +1,4 @@
-﻿using SiraUtil.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -8,36 +7,30 @@ namespace OverlySensitiveSpectrograms.Managers;
 
 internal class PeakZOffsetManager : IInitializable, IDisposable
 {
-    private const string SpectrogramsGameObjectGroupId = "Spectrograms";
+    private const string SPECTROGRAMSGROUPID = "Spectrograms";
 
     private static readonly int _peakOffsetId = Shader.PropertyToID("_PeakOffset");
 
-    private readonly SiraLog _log;
     private readonly Config _config;
-    private readonly EnvironmentGameObjectGroupManager _environmentGameObjectGroupManager;
+    private readonly EnvironmentGOGroupManager _environmentGOGroupManager;
 
     private float _currentPeakZOffset;
     private List<MeshRenderer> _meshRenderers = new();
     private Dictionary<MeshRenderer, Vector4> _peakOffsets = new();
 
-    public PeakZOffsetManager(
-        SiraLog log,
-        Config config,
-        EnvironmentGameObjectGroupManager environmentGameObjectGroupManager)
+    public PeakZOffsetManager(Config config, EnvironmentGOGroupManager environmentGOGroupManager)
     {
-        _log = log;
         _config = config;
-        _environmentGameObjectGroupManager = environmentGameObjectGroupManager;
+        _environmentGOGroupManager = environmentGOGroupManager;
     }
 
     public void Initialize()
     {
         _config.Updated += Config_Updated;
         _currentPeakZOffset = _config.PeakZOffset;
-        _environmentGameObjectGroupManager.Add<Spectrogram>(SpectrogramsGameObjectGroupId);
+        _environmentGOGroupManager.Add<Spectrogram>(SPECTROGRAMSGROUPID);
 
-        var spectrograms = _environmentGameObjectGroupManager.Get<Spectrogram>(SpectrogramsGameObjectGroupId);
-        foreach (var spectrogram in spectrograms)
+        foreach (var spectrogram in _environmentGOGroupManager.Get<Spectrogram>(SPECTROGRAMSGROUPID))
         {
             _meshRenderers.AddRange(spectrogram._meshRenderers);
         }
@@ -68,8 +61,6 @@ internal class PeakZOffsetManager : IInitializable, IDisposable
         {
             if (_peakOffsets.TryGetValue(meshRenderer, out var peakOffset))
             {
-                _log.Debug($"SetPeakZOffset {meshRenderer.gameObject.name}: X = {peakOffset.x}, Y = {peakOffset.y}, Z = {peakOffset.z}, W = {peakOffset.w}");
-
                 var newPeakOffset = peakOffset;
                 newPeakOffset.z *= zOffset;
                 meshRenderer.material.SetVector(_peakOffsetId, newPeakOffset);
