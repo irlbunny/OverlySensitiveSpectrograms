@@ -17,6 +17,7 @@ internal class BasicSpectrogramDataPatch : IAffinity
     private bool ProcessSamplesPrefix(float[] sourceSamples, List<float> processedSamples)
     {
         var deltaTime = Time.deltaTime;
+
         for (var i = 0; i < sourceSamples.Length; i++)
         {
             var sample = Mathf.Log(sourceSamples[i] + 1f) * (i + 1) * _config.SampleBoost;
@@ -30,6 +31,7 @@ internal class BasicSpectrogramDataPatch : IAffinity
             else
                 processedSamples[i] = Mathf.Lerp(processedSamples[i], sample, deltaTime * _config.SampleLerp1);
         }
+
         return false;
     }
 }
