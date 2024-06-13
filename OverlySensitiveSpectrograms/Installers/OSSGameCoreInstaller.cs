@@ -17,9 +17,9 @@ internal class OSSGameCoreInstaller : Installer
         "DaftPunkEnvironment",
     };
 
-    private readonly GameplayCoreSceneSetupData _sceneSetupData;
+    private readonly GameplayCoreSceneSetupData? _sceneSetupData;
 
-    public OSSGameCoreInstaller(GameplayCoreSceneSetupData sceneSetupData)
+    public OSSGameCoreInstaller([InjectOptional] GameplayCoreSceneSetupData? sceneSetupData)
     {
         _sceneSetupData = sceneSetupData;
     }
@@ -32,7 +32,7 @@ internal class OSSGameCoreInstaller : Installer
         // Managers
         Container.BindInterfacesAndSelfTo<EnvironmentGOGroupManager>().AsSingle();
 
-        var environmentSceneName = _sceneSetupData.environmentInfo.sceneInfo.sceneName;
+        var environmentSceneName = _sceneSetupData != null ? _sceneSetupData.environmentInfo.sceneInfo.sceneName : "";
         if (!_unsupportedPeakZOffsetEnvironments.Contains(environmentSceneName))
             Container.BindInterfacesAndSelfTo<PeakZOffsetManager>().AsSingle();
     }
