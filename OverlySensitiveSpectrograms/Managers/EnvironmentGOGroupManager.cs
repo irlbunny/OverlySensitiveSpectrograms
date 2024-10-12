@@ -7,9 +7,9 @@ namespace OverlySensitiveSpectrograms.Managers;
 
 internal class EnvironmentGOGroupManager : IInitializable, IDisposable
 {
-    private readonly Dictionary<string, GameObject[]> _groups = new();
+    readonly Dictionary<string, GameObject[]> _groups = new();
 
-    private GameObject _environmentGameObject = null!;
+    GameObject _environmentGameObject = null!;
 
     public void Initialize()
     {

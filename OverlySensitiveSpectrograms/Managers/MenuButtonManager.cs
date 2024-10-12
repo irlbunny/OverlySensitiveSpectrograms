@@ -14,13 +14,13 @@ namespace OverlySensitiveSpectrograms.Managers;
 
 internal class MenuButtonManager : IInitializable, IDisposable
 {
-    [Inject] private readonly MainFlowCoordinator _mainFlowCoordinator = null!;
-    [Inject] private readonly OSSFlowCoordinator _ossFlowCoordinator = null!;
+    [Inject] readonly MainFlowCoordinator _mainFlowCoordinator = null!;
+    [Inject] readonly OSSFlowCoordinator _ossFlowCoordinator = null!;
 #if LATEST
-    [Inject] private readonly MenuButtons _menuButtons = null!;
+    [Inject] readonly MenuButtons _menuButtons = null!;
 #endif
 
-    private MenuButton _menuButton = null!;
+    MenuButton _menuButton = null!;
 
     public async void Initialize()
     {
@@ -44,7 +44,7 @@ internal class MenuButtonManager : IInitializable, IDisposable
 #endif
     }
 
-    private void MenuButton_onClick()
+    void MenuButton_onClick()
     {
         _mainFlowCoordinator.PresentFlowCoordinator(_ossFlowCoordinator);
     }

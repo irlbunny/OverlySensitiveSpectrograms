@@ -6,7 +6,7 @@ namespace OverlySensitiveSpectrograms.AffinityPatches;
 
 internal class BasicSpectrogramDataPatch : IAffinity
 {
-    private readonly Config _config;
+    readonly Config _config;
 
     public BasicSpectrogramDataPatch(Config config)
     {
@@ -14,7 +14,7 @@ internal class BasicSpectrogramDataPatch : IAffinity
     }
 
     [AffinityPatch(typeof(BasicSpectrogramData), nameof(BasicSpectrogramData.ProcessSamples)), AffinityPrefix]
-    private bool ProcessSamplesPrefix(float[] sourceSamples, List<float> processedSamples)
+    bool ProcessSamplesPrefix(float[] sourceSamples, List<float> processedSamples)
     {
         var deltaTime = Time.deltaTime;
 

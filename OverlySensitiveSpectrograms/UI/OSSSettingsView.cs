@@ -8,7 +8,7 @@ namespace OverlySensitiveSpectrograms.UI;
 [HotReload(RelativePathToLayout = @"..\Views\settings-view.bsml")]
 internal class OSSSettingsView : BSMLAutomaticViewController
 {
-    private Config _config = null!;
+    Config _config = null!;
 
     [UIValue("sample-boost")]
     public float SampleBoost

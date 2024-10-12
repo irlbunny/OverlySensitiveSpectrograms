@@ -8,8 +8,8 @@ namespace OverlySensitiveSpectrograms.UI;
 
 internal class OSSFlowCoordinator : FlowCoordinator
 {
-    private MainFlowCoordinator _mainFlowCoordinator = null!;
-    private OSSSettingsView _settingsView = null!;
+    MainFlowCoordinator _mainFlowCoordinator = null!;
+    OSSSettingsView _settingsView = null!;
 
     [Inject]
     public void Construct(MainFlowCoordinator mainFlowCoordinator, OSSSettingsView settingsView)

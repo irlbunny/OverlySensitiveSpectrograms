@@ -7,16 +7,16 @@ namespace OverlySensitiveSpectrograms.Managers;
 
 internal class PeakZOffsetManager : IInitializable, IDisposable
 {
-    private const string SPECTROGRAMSGROUPID = "Spectrograms";
+    const string SPECTROGRAMSGROUPID = "Spectrograms";
 
-    private static readonly int _peakOffsetId = Shader.PropertyToID("_PeakOffset");
+    static readonly int _peakOffsetId = Shader.PropertyToID("_PeakOffset");
 
-    private readonly Config _config;
-    private readonly EnvironmentGOGroupManager _environmentGOGroupManager;
+    readonly Config _config;
+    readonly EnvironmentGOGroupManager _environmentGOGroupManager;
 
-    private float _currentPeakZOffset;
-    private List<MeshRenderer> _meshRenderers = new();
-    private Dictionary<MeshRenderer, Vector4> _peakOffsets = new();
+    float _currentPeakZOffset;
+    List<MeshRenderer> _meshRenderers = new();
+    Dictionary<MeshRenderer, Vector4> _peakOffsets = new();
 
     public PeakZOffsetManager(Config config, EnvironmentGOGroupManager environmentGOGroupManager)
     {
@@ -49,13 +49,13 @@ internal class PeakZOffsetManager : IInitializable, IDisposable
         _peakOffsets.Clear();
     }
 
-    private void Config_Updated(Config config)
+    void Config_Updated(Config config)
     {
         _currentPeakZOffset = config.PeakZOffset;
         SetPeakZOffset(_currentPeakZOffset);
     }
 
-    private void SetPeakZOffset(float zOffset)
+    void SetPeakZOffset(float zOffset)
     {
         foreach (var meshRenderer in _meshRenderers)
         {

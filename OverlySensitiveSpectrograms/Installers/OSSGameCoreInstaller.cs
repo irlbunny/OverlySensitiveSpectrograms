@@ -7,7 +7,7 @@ namespace OverlySensitiveSpectrograms.Installers;
 
 internal class OSSGameCoreInstaller : Installer
 {
-    private static readonly List<string> _unsupportedPeakZOffsetEnvironments = new()
+    static readonly List<string> _unsupportedPeakZOffsetEnvironments = new()
     {
         "LinkinParkEnvironment",
         "InterscopeEnvironment",
@@ -17,7 +17,7 @@ internal class OSSGameCoreInstaller : Installer
         "DaftPunkEnvironment",
     };
 
-    private readonly GameplayCoreSceneSetupData? _sceneSetupData;
+    readonly GameplayCoreSceneSetupData? _sceneSetupData;
 
     public OSSGameCoreInstaller([InjectOptional] GameplayCoreSceneSetupData? sceneSetupData)
     {
@@ -32,7 +32,7 @@ internal class OSSGameCoreInstaller : Installer
         // Managers
         Container.BindInterfacesAndSelfTo<EnvironmentGOGroupManager>().AsSingle();
 
-        var environmentSceneName = _sceneSetupData != null ? _sceneSetupData.environmentInfo.sceneInfo.sceneName : "";
+        var environmentSceneName = _sceneSetupData != null ? _sceneSetupData.targetEnvironmentInfo.sceneInfo.sceneName : "";
         if (!_unsupportedPeakZOffsetEnvironments.Contains(environmentSceneName))
             Container.BindInterfacesAndSelfTo<PeakZOffsetManager>().AsSingle();
     }
