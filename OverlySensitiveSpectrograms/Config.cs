@@ -19,6 +19,8 @@ internal class Config
     public virtual bool UseInstantChangeThreshold { get; set; }
     public virtual float InstantChangeThreshold { get; set; } = .1f;
 
+    public virtual bool DisableSpectrogramsInStaticLights { get; set; } = true;
+
     public virtual void Changed()
     {
         Updated?.Invoke(this);

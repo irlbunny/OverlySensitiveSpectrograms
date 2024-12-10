@@ -10,5 +10,8 @@
       <toggle-setting text='Use Instant Change Threshold' value='use-instant-change-threshold' apply-on-change='true' />
       <increment-setting text='Instant Change Threshold' value='instant-change-threshold' increment='0.1' apply-on-change='true' />
     </vertical>
+    <vertical child-control-height='false'>
+      <toggle-setting text='Disable Spectrograms in Static Lights' value='disable-spectrograms-in-static-lights' apply-on-change='true' />
+    </vertical>
   </vertical>
 </settings-container>

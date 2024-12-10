@@ -52,6 +52,13 @@ internal class OSSSettingsView : BSMLAutomaticViewController
         set => _config.InstantChangeThreshold = value;
     }
 
+    [UIValue("disable-spectrograms-in-static-lights")]
+    public bool DisableSpectrogramsInStaticLights
+    {
+        get => _config.DisableSpectrogramsInStaticLights;
+        set => _config.DisableSpectrogramsInStaticLights = value;
+    }
+
     [Inject]
     public void Construct(Config config)
     {
